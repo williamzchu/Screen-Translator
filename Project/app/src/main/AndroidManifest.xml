@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.chufuyuan.screentranslator">
 
+    <!-- add required permission -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,8 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ScreenTranslator"
         tools:targetApi="31">
+
+        <service
+            android:name="com.chufuyuan.screentranslator.ForegroundService"
+            android:enabled="true"
+            android:exported="true"/>
+
         <activity
-            android:name=".MainActivity"
+            android:name="com.chufuyuan.screentranslator.MainActivity"
+            android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
