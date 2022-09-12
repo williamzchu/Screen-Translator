@@ -42,7 +42,7 @@ public class Window {
         // getting a LayoutInflater
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // inflating the view with the custom layout we created
-        mView = layoutInflater.inflate(R.layout.popup_window, null);
+        mView = layoutInflater.inflate(R.layout.popup, null);
         // set onClickListener on the remove button, which removes
         // the view from the window
         mView.findViewById(R.id.window_close).setOnClickListener(new View.OnClickListener() {
