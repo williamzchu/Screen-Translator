@@ -56,7 +56,7 @@ public class Window {
 
         PopupWindow popupWindow = new PopupWindow(mView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
 //        popup.showAtLocation(anyView, Gravity.CENTER, -5, 30);
-        mView.findViewById(R.id.window_close).setOnTouchListener(new View.OnTouchListener() {
+        mView.findViewById(R.id.button2).setOnTouchListener(new View.OnTouchListener() {
             private int xp = 0;
             private int yp = 0;
             private int dx = 0;
