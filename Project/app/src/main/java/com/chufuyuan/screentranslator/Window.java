@@ -8,9 +8,11 @@ import android.os.Build;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.widget.PopupWindow;
 
 public class Window {
 
@@ -49,6 +51,38 @@ public class Window {
             @Override
             public void onClick(View view) {
                 close();
+            }
+        });
+
+        PopupWindow popupWindow = new PopupWindow(mView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
+//        popup.showAtLocation(anyView, Gravity.CENTER, -5, 30);
+        mView.findViewById(R.id.window_close).setOnTouchListener(new View.OnTouchListener() {
+            private int xp = 0;
+            private int yp = 0;
+            private int dx = 0;
+            private int dy = 0;
+            private int sides = 0;
+            private int topBot = 0;
+
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                System.out.println("boom");
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        dx = (int) event.getX();
+                        dy = (int) event.getY();
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        xp = (int) event.getRawX();
+                        yp = (int) event.getRawY();
+                        sides = (xp - dx);
+                        topBot = (yp - dy);
+                        popupWindow.update(sides, topBot, -1, -1, true);
+                        System.out.println("sides: " + sides + "topBot: " + topBot);
+                        break;
+                }
+                return true;
             }
         });
         // Define the position of the

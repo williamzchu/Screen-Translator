@@ -9,18 +9,8 @@
         android:id="@+id/window_close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="216dp"
-        android:text="Button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="228dp"
         android:text="Button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -28,10 +18,23 @@
     <SeekBar
         android:id="@+id/seekBar6"
         android:layout_width="227dp"
-        android:layout_height="17dp"
+        android:layout_height="0dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="176dp"
+        android:layout_marginBottom="537dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="99dp"
+        android:layout_marginBottom="29dp"
+        android:text="Button"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar6"
+        app:layout_constraintStart_toStartOf="@+id/seekBar6"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
