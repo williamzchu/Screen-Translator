@@ -52,13 +52,12 @@ public class Window {
             @Override
             public void onClick(View view) {
                 System.out.println("close!");
-
             }
         });
 
         PopupWindow popupWindow = new PopupWindow(mView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
 //        popup.showAtLocation(anyView, Gravity.CENTER, -5, 30);
-        mView.findViewById(R.id.window).setOnTouchListener(new View.OnTouchListener() {
+        mView.findViewById(R.id.button).setOnTouchListener(new View.OnTouchListener() {
             private int xp = 0;
             private int yp = 0;
             private int dx = 0;
