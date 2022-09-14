@@ -47,16 +47,18 @@ public class Window {
         mView = layoutInflater.inflate(R.layout.popup, null);
         // set onClickListener on the remove button, which removes
         // the view from the window
-        mView.findViewById(R.id.window_close).setOnClickListener(new View.OnClickListener() {
+
+        mView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                close();
+                System.out.println("close!");
+
             }
         });
 
         PopupWindow popupWindow = new PopupWindow(mView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
 //        popup.showAtLocation(anyView, Gravity.CENTER, -5, 30);
-        mView.findViewById(R.id.window_close).setOnTouchListener(new View.OnTouchListener() {
+        mView.findViewById(R.id.window).setOnTouchListener(new View.OnTouchListener() {
             private int xp = 0;
             private int yp = 0;
             private int dx = 0;
@@ -66,7 +68,7 @@ public class Window {
 
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                System.out.println("boom");
+                //System.out.println("boom");
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         dx = (int) event.getX();
@@ -78,8 +80,8 @@ public class Window {
                         yp = (int) event.getRawY();
                         sides = (xp - dx);
                         topBot = (yp - dy);
-                        popupWindow.update(sides, topBot, -1, -1, true);
-                        System.out.println("sides: " + sides + "topBot: " + topBot);
+                        popupWindow.update(mView, sides, topBot, -1, -1);
+                        System.out.println("sides: " + sides + "topBot: " + topBot + " test: " + popupWindow.getElevation());
                         break;
                 }
                 return true;

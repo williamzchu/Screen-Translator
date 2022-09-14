@@ -58,7 +58,7 @@ public class ForegroundService extends Service {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
-                .setContentTitle("Service running")
+                .setContentTitle("Screen Translator")
                 .setContentText("Displaying over other apps")
 
                 // this is important, otherwise the notification will show the way
