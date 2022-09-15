@@ -48,13 +48,8 @@ public class Window {
         // set onClickListener on the remove button, which removes
         // the view from the window
 
-        mView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("close!");
 
-            }
-        });
+
 
         PopupWindow popupWindow = new PopupWindow(mView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
 //        popup.showAtLocation(anyView, Gravity.CENTER, -5, 30);
@@ -74,7 +69,7 @@ public class Window {
                         initialY = mParams.y;
 
                         initialTouchX = event.getRawX();
-                        initialTouchX = event.getRawY();
+                        initialTouchY = event.getRawY();
 
                         lastAction = event.getAction();
                         return true;
@@ -83,13 +78,14 @@ public class Window {
                         //we have to check if the previous action was ACTION_DOWN
                         //to identify if the user clicked the view or not.
                         if (lastAction == MotionEvent.ACTION_DOWN) {
-                            System.out.println("clicked!");
+                            System.out.println("Roll a 1 if you gay: " + (int)(Math.random()*11));
                         }
                         lastAction = event.getAction();
                         return true;
                     case MotionEvent.ACTION_MOVE:
                         mParams.x = initialX + (int) (event.getRawX() - initialTouchX);
                         mParams.y = initialY + (int) (event.getRawY() - initialTouchY);
+
                         mWindowManager.updateViewLayout(mView, mParams);
                         //popupWindow.update(mView, sides, topBot, -1, -1);
 

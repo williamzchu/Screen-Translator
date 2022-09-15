@@ -9,6 +9,7 @@
         android:id="@+id/window"
         android:layout_width="60dp"
         android:layout_height="60dp"
+        android:layout_weight="1"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,19 +18,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.461">
 
+        <Button
+            android:id="@+id/button"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/buttonshape"
+            android:text="" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="124dp"
-        android:layout_height="94dp"
-        android:layout_marginBottom="476dp"
-        android:background="@drawable/buttonshape"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.289"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
