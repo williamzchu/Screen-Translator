@@ -58,38 +58,54 @@ public class Window {
 
         PopupWindow popupWindow = new PopupWindow(mView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, false);
 //        popup.showAtLocation(anyView, Gravity.CENTER, -5, 30);
-        mView.findViewById(R.id.window).setOnTouchListener(new View.OnTouchListener() {
-            private int xp = 0;
-            private int yp = 0;
-            private int dx = 0;
-            private int dy = 0;
-            private int sides = 0;
-            private int topBot = 0;
+        mView.findViewById(R.id.button).setOnTouchListener(new View.OnTouchListener() {
+            private int lastAction;
+            private int initialX;
+            private int initialY;
+            private float initialTouchX;
+            private float initialTouchY;
 
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 //System.out.println("boom");
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
-                        dx = (int) event.getX();
-                        dy = (int) event.getY();
-                        break;
+                        initialX = mParams.x;
+                        initialY = mParams.y;
 
+                        initialTouchX = event.getRawX();
+                        initialTouchX = event.getRawY();
+
+                        lastAction = event.getAction();
+                        return true;
+                    case MotionEvent.ACTION_UP:
+                        //As we implemented on touch listener with ACTION_MOVE,
+                        //we have to check if the previous action was ACTION_DOWN
+                        //to identify if the user clicked the view or not.
+                        if (lastAction == MotionEvent.ACTION_DOWN) {
+                            System.out.println("clicked!");
+                        }
+                        lastAction = event.getAction();
+                        return true;
                     case MotionEvent.ACTION_MOVE:
-                        xp = (int) event.getRawX();
-                        yp = (int) event.getRawY();
-                        sides = (xp - dx);
-                        topBot = (yp - dy);
-                        popupWindow.update(mView, sides, topBot, -1, -1);
-                        System.out.println("sides: " + sides + "topBot: " + topBot + " test: " + popupWindow.getElevation());
-                        break;
+                        mParams.x = initialX + (int) (event.getRawX() - initialTouchX);
+                        mParams.y = initialY + (int) (event.getRawY() - initialTouchY);
+                        mWindowManager.updateViewLayout(mView, mParams);
+                        //popupWindow.update(mView, sides, topBot, -1, -1);
+
+
+                        //System.out.println("sides: " + sides + "topBot: " + topBot + " test: " + popupWindow.getElevation());
+                        lastAction = event.getAction();
+                        return true;
                 }
-                return true;
+                return false;
             }
         });
         // Define the position of the
         // window within the screen
-        mParams.gravity = Gravity.CENTER;
+        mParams.gravity = Gravity.TOP | Gravity.LEFT;
+        mParams.x = 0;
+        mParams.y = 100;
 
         mWindowManager = (WindowManager)context.getSystemService(WINDOW_SERVICE);
 
