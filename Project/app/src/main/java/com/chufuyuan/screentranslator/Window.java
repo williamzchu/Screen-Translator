@@ -78,7 +78,7 @@ public class Window {
                         //we have to check if the previous action was ACTION_DOWN
                         //to identify if the user clicked the view or not.
                         if (lastAction == MotionEvent.ACTION_DOWN) {
-                            System.out.println("Roll a 1 if you gay: " + (int)(Math.random()*11));
+                            System.out.println("Roll a 1 if you gay: " + (int)((Math.random()*6) + 1));
                         }
                         lastAction = event.getAction();
                         return true;
